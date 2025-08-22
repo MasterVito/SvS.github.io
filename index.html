@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Beyond Pass@1: Self-Play with Variational Problem Synthesis Sustains RLVR">
+  <meta name="keywords" content="MLLMs, MV-MATH">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond Pass@1: Self-Play with Variational Problem Synthesis Sustains RLVR</title>
+
+
+  <link rel="icon" href="./static/images/ucas_logo_circle.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+
+
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+  <script src="./visualizer/data/data_public.js" defer></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"
+          style="
+            width: 120%;
+            max-width: 120%;
+            white-space: normal;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+          ">
+          Beyond Pass@1: Self-Play with Variational Problem Synthesis Sustains RLVR
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://mastervito.github.io/">Xiao Liang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://zzli2022.github.io/">Zhong-Zhi Li</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.microsoft.com/en-us/research/people/yegong/">Yeyun Gong</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/yelong-shen-84b0122b/">Yelong Shen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.stat.ucla.edu/~ywu/research.html">Ying Nian Wu</a><sup>1</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://cartus.github.io/">Zhijiang Guo</a><sup>4,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.microsoft.com/en-us/research/people/wzchen/">Weizhu Chen</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California, Los Angeles</span>  &nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Microsoft</span> <br>
+            <span class="author-block"><sup>3</sup>School of Artificial Intelligence, Chinese Academy of Sciences</span> <br>
+            <span class="author-block"><sup>4</sup>Hong Kong University of Science and Technology</span>
+            <span class="author-block"><sup>5</sup>Hong Kong University of Science and Technology (Guangzhou)</span>
+            <!-- <br>
+            <span class="paper-block"><b style="color:#f41c1c">CVPR 2025</b> </span> -->
+
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2506.08989"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.08989"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://github.com/MasterVito/SwS"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>code</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>dataset</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <img src="static/images/teaser.png" alt="geometric reasoning" width="100%" style="margin-bottom: 0px;"/>
+        <p>
+          Figure 1: We train 
+          <a href="https://huggingface.co/Qwen/Qwen2.5-32B-Instruct" target="_blank">Qwen2.5-32B-Instruct</a> 
+          on the 
+          <a href="https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k" target="_blank">DAPO-17k</a> 
+          dataset using our SvS strategy and standard RLVR. 
+          SvS achieves significant improvements in in <i>Pass@32</i> and <i>Pass@1</i> (average 32 times) scores on competition-level AIME benchmarks.
+        </p>
+    </div>
+  </div>
+</section> 
+<br>
+<br>
+
+
+<!-- Introduction SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body" style="display: flex; justify-content: center;">
+    <div style="flex: 0 0 85%; text-align: center;">
+      <h1 class="title is-1 mathvista">
+        <span class="mathvista" style="vertical-align: middle">Introduction</span>
+      </h1>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 1vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column" style="flex: 0 0 85%;">
+        <!-- <h1 class="title is-3">Introduction</h1> -->
+        <div class="content has-text-justified">
+          <p>
+            Reinforcement Learning with Verifiable Rewards (RLVR) has recently emerged as a key paradigm for post-training Large Language Models (LLMs), particularly for complex reasoning tasks. However, vanilla RLVR training has been shown to improve <em>Pass@1</em> performance at the expense of policy entropy, leading to reduced generation diversity and limiting the <em>Pass@k</em> performance, which typically represents the upper bound of LLM reasoning capability. In this paper, we systematically analyze the policy&#39;s generation diversity from the perspective of training problems and find that augmenting and updating training problems helps mitigate <em>entropy collapse</em> during training. Based on these observations, we propose an online <strong>S</strong>elf-play with <strong>V</strong>ariational problem <strong>S</strong>ynthesis (<strong><abbr title="Self-play with Variational problem Synthesis">SvS</abbr></strong>) strategy for RLVR training, which uses the policy’s correct solutions to synthesize variational problems while ensuring their reference answers remain identical to the originals. This self-improving strategy effectively maintains policy entropy during training and substantially improves <em>Pass@k</em> compared with standard RLVR, sustaining prolonged improvements and achieving absolute gains of <strong>18.3%</strong> and <strong>22.8%</strong> in <em>Pass@32</em> performance on the competition-level AIME24 and AIME25 benchmarks. Experiments on 12 reasoning benchmarks across varying model sizes from 3B to 32B consistently demonstrate the generalizability and robustness of <abbr title="Self-play with Variational problem Synthesis">SvS</abbr>.          
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</div>
+</section>
+
+
+
+<!-- DATASET SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+  <h1 class="title is-1 mathvista">
+    <span class="mathvista" style="vertical-align: middle">Methodology</span>
+  </h1>
+  </div>
+</section>
+
+            
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+
+        <div class="column" style="flex: 0 0 85%;">
+          <div class="content has-text-justified">
+              <p>
+                To achieve <b>ideal</b> data augmentation for RLVR as discussed in Section&nbsp;<em>rethinking</em>, we introduce the 
+                <strong>SvS</strong> framework, which leverages the policy itself to augment training problems through 
+                online self-play, enabling sustainable self-improvement.
+              </p>
+
+              <p>
+                The central idea for SvS is to synthesize <strong>variational problems</strong> from the policy's correct solutions to 
+                challenging (under-performing) training problems, and then prompts the policy to solve these synthetic problems. 
+                Ideally, these synthesized problems preserve the semantics and ground-truth answers of the originals, while their 
+                representations—such as structures, contexts, or descriptions—may differ substantially, thus encouraging the policy 
+                to explore diverse reasoning strategies.
+                Specifically, as illustrated in Figure. 2, each online augmented training batch at step <em>t</em> consists of <em>three components</em>:
+              </p>
+
+              <ul style="padding-left: 18px; margin-left: 0;">
+                <li>
+                  <strong>Original Problem Solving</strong>: The policy generates solutions to training problems, with under-performing ones retained as challenging problems.
+                </li>
+                <li>
+                  <strong>Variational Problem Synthesis</strong>: The correct solutions to the challenging problems are used as context to synthesize variational problems that <i>maintain the reference answers of the original ones</i>.
+                </li>
+                <li>
+                  <strong>Synthetic Problem Solving</strong>: The policy is prompted to solve the self-synthesized variational problems.
+                </li>
+              </ul>
+          </div>
+        <div style="height:5px;"></div>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="content has-text-centered">
+            <img src="static/images/svs_method.png" alt="distribution" width="110%"/>
+            <p style="margin-top:0px;"> Figure 2: The data workflow of our SVS in a training iteration, comprising original problem solving, variational problem synthesis, synthetic problem solving, and policy update data filtering.</p>
+            <br>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+        <p>We present an example of variational problem synthesis and its reward-shaping. If a synthetic problem is either trivially solvable (too simple) or no solution aligns with the original answer (unsolvable) is sampled, it receives a negative reward.</p>
+        </div>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="content has-text-centered">
+            <img src="static/images/case.png" alt="distribution" width="110%"/>
+            <p style="margin-top:0px;"> Figure 3: Illustrations of a challenging problem, its correct solution from policy, the synthetic variational problems from the solution, and the reward-shaping strategy for the synthetic problems.</p>
+            <br>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+<!-- RESULTS SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Experiments</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths" style="width: 100%;">
+      
+        <!-- <h2 class="title is-3">Main Results</h2> -->
+
+
+        <div style="width:85%;margin:0 auto;">
+          <div class="content has-text-justified">
+            <p>
+              <strong><span class="SvS">SvS</span> significantly improves both <em>Pass@1</em> and <em>Pass@k</em>.</strong>
+              Models trained on the DAPO dataset with the
+              <span class="ours">ours</span> strategy achieve absolute gains of
+              <strong><span class="gain">18.3</span></strong> and
+              <strong><span class="gain">22.8</span></strong> points on <em>Pass@32</em> for AIME24 and AIME25,
+              respectively, compared to the standard RLVR baseline.
+            </p>
+          </div>
+        </div>
+
+        <div style="height:8px;"></div>
+
+        <div style="width:85%;margin:0 auto;">
+          <div class="content has-text-justified">
+            <div id="results-carousel" class="carousel results-carousel">  
+              <div class="content has-text-centered">
+                <img src="static/images/main_pass_k_pass_1.png" style="width: 100%;"/>
+                <p style="margin-top:0px;"> Table 1: Comparison of performance on challenging benchmarks using the Pass@1 (average 32 times) and Pass@32 metrics.</p>
+                <p style="text-align: center; margin-left: auto; margin-right: auto; width: 80%;">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="height:8px;"></div>
+
+        <div style="width:85%;margin:0 auto;">
+          <div class="content has-text-justified">
+            <p>
+              The <strong><span class="SvS">SvS</span> </strong> strategy consistently outperforms standard RLVR across all model sizes and evaluation benchmarks.
+            </p>
+          </div>
+        </div>
+
+        <div style="height:8px;"></div>
+        <div style="width:85%;margin:0 auto;">
+          <div class="content has-text-justified">
+            <div id="results-carousel" class="carousel results-carousel">  
+              <div class="content has-text-centered">
+                <img src="static/images/main_result.png" style="width: 100%;"/>
+                <p style="margin-top:0px;"> Table 2: Performance comparison between the vanilla RLVR and our SVS strategy on mainstream reasoning benchmarks</p>
+                <p style="text-align: center; margin-left: auto; margin-right: auto; width: 80%;">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+
+
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista">
+      <span class="mathvista" style="vertical-align: middle">Analysis</span>
+    </h1>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- 1. Weak-to-Strong Generalization -->
+    <div class="content" style="width:85%;margin:0 auto;">
+        <p>
+          <strong>1. <span class="SvS">SvS</span> stably maintains policy entropy during RL training.</strong>
+        </p>
+        <p>
+          In RLVR training, policy entropy reflects the model’s capacity for sustained exploration.
+          Notably, the standard RLVR baseline shows a continuous decline in entropy,
+          whereas <span class="ours">SvS</span> maintains entropy within a relatively stable range,
+          supporting sustained exploration and avoiding training collapse.
+          This stability explains the continuous improvements in both <em>Pass@1</em> and <em>Pass@32</em>
+          achieved by <span class="SvS">SvS</span>, as shown in
+          <a href="#fig-teaser">Figure&nbsp;1</a>, whereas RLVR saturates after a certain number of training steps.
+        </p>
+    </div>
+    <div class="content" style="width:85%;margin:0 auto; margin-top:1em;">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="has-text-centered">
+          <img src="static/images/entropy.png" style="width: 100%;"/>
+          <p class="caption" style="text-align:center;margin-top:0.0em;">
+            Figure 4: Policy entropy trajectories during training for standard RLVR and our SVS strategy across various models and datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:30px;"></div>
+    <!-- 2. Self-evolving Targeted Problem Synthesis -->
+    <div class="content" style="width:85%;margin:0 auto;">
+      <p>
+        <strong>2. <span class="SvS">SvS</span> pushes the reasoning boundary on <em>Pass@k</em>.</strong>
+      </p>
+      <p>
+        We further evaluate SvS's effectiveness and limits in incentivizing reasoning by scaling <em>Pass@k</em> 
+        from 1 to 1024, testing whether the <span class="SvS">SvS</span>-trained model can solve problems 
+        beyond the capability of the base model.
+        As presented, <span class="SvS">SvS</span> significantly outperforms the RLVR and initial model baseline, 
+        <b>even when k is scaled up to 1024.</b>
+        For <em>Pass@k</em> scaling on MATH-500, RLVR outperforms the initial model at small <em>k</em> 
+        values but is surpassed at larger <em>k</em>. In contrast, <span class="SvS">SvS</span> consistently 
+        outperforms both RLVR and the initial model as <em>k</em> increases, demonstrating its strong generalization 
+        and robust reasoning diversity.
+      </p>
+
+    </div>
+    <div class="content" style="width:85%;margin:0 auto; margin-top:1em;">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="has-text-centered">
+          <img src="static/images/scaling_k_analysis.png" style="width: 100%;"/>
+          <div style="height:10px;"></div>
+          <p class="caption" style="text-align:center;margin-top:0.0em;">
+            Figure 5: Evaluating the scaled-up Pass@k performance on the AIME-24, AIME-25, Beyond-AIME, and MATH-500 benchmarks. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content" style="width:85%;margin:0 auto; margin-top:1em;">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="has-text-centered">
+          <img src="static/images/aime_case_study.png" style="width: 100%;"/>
+          <div style="height:10px;"></div>
+          <p class="caption" style="text-align:center;margin-top:0.0em;">
+            Figure 6: Comparison of instance-level accuracy between standard RLVR and SVS trained model. For each problem, the accuracy is averaged over 1024 generations on both AIME24 and AIME25.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:30px;"></div>
+    <!-- 3. Weakness-driven Selection -->
+    <div class="content" style="width:85%;margin:0 auto;">
+      <p><strong>3. <span class="SvS">SvS</span> Generalizes Beyond Reasoning Tasks.</strong></p>
+      <div class="content has-text-justified">
+        <p>Notably, models trained with standard problem-solving RLVR exhibit a decline in performance on broad general benchmarks. In contrast, the SVS trained model not only avoids this degradation but also surpasses the initial instruction-following model on several general tasks. These results indicate that the additional problem synthesis task helps prevent overfitting to mathematical reasoning tasks.</p>
+      </div>
+    </div>
+    <div class="content" style="width:85%;margin:0 auto; margin-top:1em;">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="has-text-centered">
+          <img src="static/images/general_results.png" style="width: 100%;"/>
+          <p style="text-align: center; margin-left: auto; margin-right: auto; width: 85%;">
+            Table 3: Evaluation on general question-answering and code benchmarks, where SvS shows the highest overall performance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista">
+      <span class="mathvista" style="vertical-align: middle">Visualization</span>
+    </h1>
+  </div>
+</section> -->
+
+
+<!-- <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths" style="width: 100%;">
+        <div style="width:85%;margin:0 auto;">
+          <div class="content has-text-justified">
+            <p>
+              Illustrations of a challenging problem, its correct solution from policy, the synthetic variational problems from the solution, and the reward-shaping strategy for the synthetic problems
+            <br><br>
+            </p>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <div id="results-carousel" class="carousel results-carousel">  
+            <div class="content has-text-centered">
+              <img src="static/images/synthetic_case.png" style="width: 85%;"/>
+              <p style="text-align: center; margin-left: auto; margin-right: auto; width: 80%;">
+              <br>
+              </p>
+            </div>
+          </div>
+        </div>
+</section> -->
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista">
+      <span class="mathvista" style="vertical-align: middle">Cite Us</span>
+    </h1>
+  </div>
+</section>
+  
+
+<!-- @PAN TODO: bibtex -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <pre><code>@misc{liang2025pass1selfplayvariationalproblem,
+      title={Beyond Pass@1: Self-Play with Variational Problem Synthesis Sustains RLVR}, 
+      author={Xiao Liang and Zhongzhi Li and Yeyun Gong and Yelong Shen and Ying Nian Wu and Zhijiang Guo and Weizhu Chen},
+      year={2025},
+      eprint={2508.14029},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2508.14029}, 
+}</code></pre>
+  </div>
+</section>
+
+</body>
+</html>
